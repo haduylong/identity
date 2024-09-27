@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: identity
+  datasource:
+    url: jdbc:mysql://localhost:3306/identity
+    username: root
+    password: 123456789
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /identity
+
+app:
+  jwt:
+    secret-key: snYUaoDAzakMGaTyu5Ap6kbadp6FMBnanXVDxN+K2vmiGvxEc0yhVrEdFROiwTd4
+    token-valid-duration: 20    # in second; thoi han cua token
+    refreshable-duration: 120   # in second; thoi han refresh cua token cu
