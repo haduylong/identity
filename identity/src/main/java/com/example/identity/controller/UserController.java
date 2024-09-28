@@ -5,6 +5,7 @@ import com.example.identity.dto.request.user.UserUpdateRequest;
 import com.example.identity.dto.response.ApiResponse;
 import com.example.identity.dto.response.user.UserResponse;
 import com.example.identity.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +21,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping
-    ApiResponse<UserResponse> create(@RequestBody UserCreateRequest request) {
+    ApiResponse<UserResponse> create(@RequestBody @Valid UserCreateRequest request) {
         UserResponse userResponse = userService.create(request);
 
         return ApiResponse.<UserResponse>builder()
