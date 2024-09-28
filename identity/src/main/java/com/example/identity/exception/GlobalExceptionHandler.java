@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         exception.printStackTrace();
-        // get key error and message error; template ErrorCode{regex}message
+        // get key error and message error; template ErrorCode{regex}message; xem trong phần validator
         // vd trong trường hợp regex là :: và ErrorCode là INVALID_USERNAME là INVALID_USERNAME::Date of birth ...
         String[] errorKeyAndMessage = exception.getFieldError().getDefaultMessage().split("::");
         ErrorCode errorCode = ErrorCode.valueOf(errorKeyAndMessage[0]);
