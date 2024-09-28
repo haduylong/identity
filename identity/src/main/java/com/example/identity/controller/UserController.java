@@ -4,8 +4,6 @@ import com.example.identity.dto.request.user.UserCreateRequest;
 import com.example.identity.dto.request.user.UserUpdateRequest;
 import com.example.identity.dto.response.ApiResponse;
 import com.example.identity.dto.response.user.UserResponse;
-import com.example.identity.entity.User;
-import com.example.identity.mapper.UserMapper;
 import com.example.identity.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +47,15 @@ public class UserController {
     @PutMapping("/{userId}")
     ApiResponse<UserResponse> update(@PathVariable String userId ,@RequestBody UserUpdateRequest request) {
         UserResponse userResponse = userService.updateUser(userId, request);
+
+        return ApiResponse.<UserResponse>builder()
+                .result(userResponse)
+                .build();
+    }
+
+    @GetMapping("/{userId}")
+    ApiResponse<UserResponse> getById(@PathVariable String userId) {
+        UserResponse userResponse = userService.getById(userId);
 
         return ApiResponse.<UserResponse>builder()
                 .result(userResponse)

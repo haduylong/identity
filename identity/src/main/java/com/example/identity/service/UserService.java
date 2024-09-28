@@ -74,4 +74,11 @@ public class UserService {
 
         return userMapper.toUserResponse(user);
     }
+
+    public UserResponse getById(String id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
+
+        return userMapper.toUserResponse(user);
+    }
 }

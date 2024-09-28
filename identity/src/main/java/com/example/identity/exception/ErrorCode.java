@@ -10,8 +10,10 @@ import org.springframework.http.HttpStatusCode;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public enum ErrorCode {
     UNCATEGORIZED_EXCEPTION(999, "Uncategorized exception", HttpStatus.INTERNAL_SERVER_ERROR),
-    USER_NOT_FOUND(1001, "User not found", HttpStatus.BAD_REQUEST)
-    ;
+    USER_NOT_FOUND(1001, "User not found", HttpStatus.BAD_REQUEST),
+    UNAUTHENTICATED(1002, "Unauthenticated", HttpStatus.BAD_REQUEST),
+    CAN_NOT_CREATE_TOKEN(1003, "Can not create token", HttpStatus.INTERNAL_SERVER_ERROR),
+    CAN_NOT_VERIFY_TOKEN(1004, "Can not verify token", HttpStatus.BAD_REQUEST);
     int code;
     String message;
     HttpStatusCode httpStatusCode;
