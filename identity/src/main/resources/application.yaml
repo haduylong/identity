@@ -19,4 +19,4 @@ app:
   jwt:
     secret-key: snYUaoDAzakMGaTyu5Ap6kbadp6FMBnanXVDxN+K2vmiGvxEc0yhVrEdFROiwTd4
     token-valid-duration: 20    # in second; thoi han cua token
-    refreshable-duration: 60   # in second; thoi han refresh cua token cu
+    refreshable-duration: 3600   # in second; thoi han refresh cua token cu

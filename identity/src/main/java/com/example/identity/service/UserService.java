@@ -14,12 +14,15 @@ import com.example.identity.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -48,6 +51,11 @@ public class UserService {
     }
 
     public List<UserResponse> getAll() {
+        var context = SecurityContextHolder.getContext();
+        var authentication = context.getAuthentication();
+        log.info("Username: {}", authentication.getName());
+        log.info("Scope: {}", authentication.getAuthorities());
+
         List<User> userList = userRepository.findAll();
 
         return userList
